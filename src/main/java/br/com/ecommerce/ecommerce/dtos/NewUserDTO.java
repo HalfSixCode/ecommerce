@@ -8,4 +8,6 @@ public record NewUserDTO (
       @NotBlank String name,
       @NotBlank @Email String email,
       @NotBlank @Size(min = 8) String password
+
 ) {}
+
