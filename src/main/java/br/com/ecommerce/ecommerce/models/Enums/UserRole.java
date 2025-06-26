@@ -1,4 +1,4 @@
-package br.com.ecommerce.ecommerce.models.Enums;
+package br.com.ecommerce.ecommerce.models.enums;
 
 import lombok.*;
 

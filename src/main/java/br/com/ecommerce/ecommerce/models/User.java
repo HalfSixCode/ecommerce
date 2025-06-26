@@ -3,7 +3,7 @@ package br.com.ecommerce.ecommerce.models;
 import jakarta.persistence.*;
 import lombok.*;
 import br.com.ecommerce.ecommerce.dtos.NewUserDTO;
-import br.com.ecommerce.ecommerce.models.Enums.UserRole;
+import br.com.ecommerce.ecommerce.models.enums.UserRole;
 
 @Entity
 @Getter
