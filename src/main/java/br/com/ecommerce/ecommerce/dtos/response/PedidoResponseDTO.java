@@ -16,7 +16,7 @@ public record PedidoResponseDTO (
 
         BigDecimal valorTotal,
 
-        UUID userId
+        String userId
 
         //List<ItemPedidoResponseDTO> itens
 ){}
