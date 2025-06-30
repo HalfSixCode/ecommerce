@@ -8,7 +8,7 @@ import java.util.UUID;
 public record PedidoRequestDTO (
 
         @NotBlank
-        UUID userId
+        String userId
 
         //@NotBlank
         //List<ItemPedidoRequestDTO> items

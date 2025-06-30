@@ -16,5 +16,5 @@ public interface PedidoRepository extends JpaRepository<PedidoEntity, UUID> {
     Optional<PedidoEntity> findByIdAndUser(UUID id, User user);
 
     Optional<PedidoEntity> findByDataPedidoAndUser(LocalDateTime dataPedido, User user);
-    ;
+
 }
