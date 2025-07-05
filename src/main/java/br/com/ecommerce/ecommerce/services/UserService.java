@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.ecommerce.ecommerce.dtos.NewUserDTO;
-import br.com.ecommerce.ecommerce.dtos.UserDTO;
+import br.com.ecommerce.ecommerce.dtos.request.NewUserDTO;
+import br.com.ecommerce.ecommerce.dtos.response.UserDTO;
 import br.com.ecommerce.ecommerce.models.User;
 import br.com.ecommerce.ecommerce.repository.UserRepository;
 

@@ -39,4 +39,8 @@ public class EntregaEntity {
     @Column(name="data_entrega",nullable = false)
     private LocalDateTime dataEntrega;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "pedido_id")
+    private PedidoEntity pedidoEntity;
+
 }
