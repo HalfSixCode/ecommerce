@@ -35,5 +35,7 @@ public class ItemPedidoEntity {
     @JoinColumn(name = "pedido_id", nullable = false)
     private PedidoEntity pedidoId;
 
-    //private ProdutoEntity produtoId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "produto_id", nullable = false)
+    private ProdutoEntity produtoId;
 }
