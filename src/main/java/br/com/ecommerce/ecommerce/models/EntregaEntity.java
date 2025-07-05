@@ -41,6 +41,6 @@ public class EntregaEntity {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pedido_id", nullable = false)
-    private PedidoEntity pedidoEntity;
+    private PedidoEntity pedidoId;
 
 }

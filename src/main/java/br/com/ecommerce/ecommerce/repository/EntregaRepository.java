@@ -8,7 +8,8 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.UUID;
 
-public interface EntregaRepository {
+@Repository
+public interface EntregaRepository extends JpaRepository<EntregaEntity, UUID> {
     Optional<EntregaEntity> findById(UUID entregaId);
     Optional<EntregaEntity> findByCodigoRastreio(String codigoRastreio);
     Optional<EntregaEntity> findByDataEnvio(LocalDateTime dataEnvio);

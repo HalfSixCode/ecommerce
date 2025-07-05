@@ -6,6 +6,7 @@ import java.util.UUID;
 
 public record EntregaResponseDTO(
     UUID entregaId,
+    UUID pedidoId,
     String codigoRastreio,
     LocalDateTime dataEnvio,
     LocalDateTime dataEntrega,

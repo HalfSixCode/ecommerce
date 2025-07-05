@@ -1,11 +1,13 @@
 package br.com.ecommerce.ecommerce.dtos.request;
-
 import jakarta.validation.constraints.NotBlank;
 import java.util.UUID;
 
-public record EntregaRequestDTO(
+public record AvaliacaoRequestDTO(
     @NotBlank
-    UUID pedidoId,
+    UUID usuarioId,
     @NotBlank
-    String enderecoEntrega
+    UUID produtoId,
+    @NotBlank
+    String comentario,
+    int nota
 ) {}
