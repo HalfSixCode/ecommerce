@@ -5,5 +5,7 @@ import java.util.UUID;
 
 public record EntregaRequestDTO(
     @NotBlank
-    UUID pedidoId
+    UUID pedidoId,
+    @NotBlank
+    String enderecoEntrega
 ) {}
