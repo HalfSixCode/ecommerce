@@ -1,4 +1,4 @@
-package br.com.ecommerce.ecommerce.dtos;
+package br.com.ecommerce.ecommerce.dtos.request;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
