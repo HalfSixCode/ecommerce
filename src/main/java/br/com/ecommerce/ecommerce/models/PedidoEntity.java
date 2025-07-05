@@ -37,6 +37,6 @@ public class PedidoEntity {
     private BigDecimal valorTotal;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User userId;
+    @JoinColumn(name = "user_id", nullable = false)
+    private UserEntity userId;
 }
