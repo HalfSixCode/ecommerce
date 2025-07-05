@@ -3,7 +3,7 @@ package br.com.ecommerce.ecommerce.services;
 import br.com.ecommerce.ecommerce.dtos.request.PedidoRequestDTO;
 import br.com.ecommerce.ecommerce.dtos.response.PedidoResponseDTO;
 import br.com.ecommerce.ecommerce.models.PedidoEntity;
-import br.com.ecommerce.ecommerce.models.User;
+import br.com.ecommerce.ecommerce.models.UserEntity;
 import br.com.ecommerce.ecommerce.models.enums.StatusPedido;
 import br.com.ecommerce.ecommerce.repository.PedidoRepository;
 import br.com.ecommerce.ecommerce.repository.UserRepository;
@@ -25,7 +25,7 @@ public class PedidoService {
     private UserRepository userRepository;
 
     public PedidoResponseDTO criarPedido(PedidoRequestDTO pedidoRequestDTO) {
-        User usuario = userRepository.findById(pedidoRequestDTO.userId())
+        UserEntity usuario = userRepository.findById(pedidoRequestDTO.userId())
                 .orElseThrow(() -> new EntityNotFoundException("Usuário não encontrado"));
 
         PedidoEntity novoPedido = PedidoEntity.builder()

@@ -9,7 +9,7 @@ import br.com.ecommerce.ecommerce.models.enums.UserRole;
 @Getter
 @Setter
 @NoArgsConstructor
-public class User {
+public class UserEntity {
     
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -23,7 +23,7 @@ public class User {
 
     private UserRole role;
 
-    public User(NewUserDTO userDTO) {
+    public UserEntity(NewUserDTO userDTO) {
         this.name = userDTO.name();
         this.email = userDTO.email();
         this.password = userDTO.password();

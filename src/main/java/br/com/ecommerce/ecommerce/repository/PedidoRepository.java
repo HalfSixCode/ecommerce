@@ -1,7 +1,7 @@
 package br.com.ecommerce.ecommerce.repository;
 
 import br.com.ecommerce.ecommerce.models.PedidoEntity;
-import br.com.ecommerce.ecommerce.models.User;
+import br.com.ecommerce.ecommerce.models.UserEntity;
 import br.com.ecommerce.ecommerce.models.enums.StatusPedido;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -13,8 +13,8 @@ public interface PedidoRepository extends JpaRepository<PedidoEntity, UUID> {
 
     Optional<PedidoEntity> findByStatus(StatusPedido statusPedido);
 
-    Optional<PedidoEntity> findByIdAndUser(UUID id, User user);
+    Optional<PedidoEntity> findByIdAndUser(UUID id, UserEntity user);
 
-    Optional<PedidoEntity> findByDataPedidoAndUser(LocalDateTime dataPedido, User user);
+    Optional<PedidoEntity> findByDataPedidoAndUser(LocalDateTime dataPedido, UserEntity user);
 
 }
