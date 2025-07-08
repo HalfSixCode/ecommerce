@@ -2,6 +2,7 @@ package br.com.ecommerce.ecommerce.models;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.UUID;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -17,7 +18,7 @@ public class ProdutoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "produto_id")
-    private String produtoId;
+    private UUID produtoId;
 
     @Column(name = "name", nullable = false)
     private String name;
