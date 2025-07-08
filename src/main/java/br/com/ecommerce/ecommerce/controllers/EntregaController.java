@@ -37,23 +37,8 @@ public class EntregaController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
     @PutMapping("/{entregaId}/status")
-    public ResponseEntity<EntregaResponseDTO> alterarStatusEntrega(
-            @PathVariable UUID entregaId,
-            @RequestParam StatusEntrega novoStatus) {
-
-        EntregaEntity entregaAtualizada = entregaService
-            .alterarStatusEntrega(entregaId, novoStatus)
-            .orElseThrow(() -> new EntityNotFoundException("Entrega não encontrada"));
-
-        return ResponseEntity.ok(new EntregaResponseDTO(
-                entregaAtualizada.getEntregaId(),
-                entregaAtualizada.getPedidoId().getPedidoId(),
-                entregaAtualizada.getCodigoRastreio(),
-                entregaAtualizada.getDataEnvio(),
-                entregaAtualizada.getDataEntrega(),
-                entregaAtualizada.getEnderecoEntrega(),
-                entregaAtualizada.getStatusEntrega()
-        ));
+    public ResponseEntity<Void> alterarStatusEntrega(@PathVariable UUID entregaId, @RequestParam StatusEntrega novoStatus) {
+        entregaService.alterarStatusEntrega(entregaId, novoStatus);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-    
 }
