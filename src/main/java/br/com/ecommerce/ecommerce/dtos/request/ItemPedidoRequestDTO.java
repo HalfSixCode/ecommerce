@@ -10,6 +10,6 @@ public record ItemPedidoRequestDTO (
         UUID produtoId,
 
         @NotBlank(message = "Informe a quantidade do produto")
-        Integer quantiade
+        Integer quantidade
 ) {
 }
