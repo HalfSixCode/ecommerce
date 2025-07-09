@@ -37,10 +37,10 @@ public class ItemPedidoService {
     public ItemPedidoEntity atualizar(UUID id, ItemPedidoEntity novoItem) {
         ItemPedidoEntity existente = buscarPorId(id);
 
-        existente.setProduto(novoItem.getProduto());
+        existente.setProdutoId(novoItem.getProdutoId());
         existente.setQuantidade(novoItem.getQuantidade());
         existente.setPrecoUnitario(novoItem.getPrecoUnitario());
-        existente.setPedido(novoItem.getPedido());
+        existente.setPedidoId(novoItem.getPedidoId());
 
         return itemPedidoRepository.save(existente);
     }
