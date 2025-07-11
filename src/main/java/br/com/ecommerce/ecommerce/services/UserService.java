@@ -1,6 +1,7 @@
 package br.com.ecommerce.ecommerce.services;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,14 +39,20 @@ public class UserService {
         return returnUsers;
     }
 
-    public UserDTO getUserById(String userId){
+    public UserDTO getUserResponseById(UUID userId){
         UserEntity user = userRepository.findById(userId)
                         .orElseThrow(() -> new RuntimeException("Usuario não encontrado"));
         UserDTO returnUser = new UserDTO(user.getName(), user.getEmail());
         return returnUser;
     }
+
+    public UserEntity getUserById(UUID userId){
+        UserEntity user = userRepository.findById(userId)
+                        .orElseThrow(() -> new RuntimeException("Usuario não encontrado"));
+        return user;
+    }
     
-      public void deleteUserById(String userId){
+      public void deleteUserById(UUID userId){
         UserEntity user = userRepository.findById(userId)
                         .orElseThrow(() -> new RuntimeException("Usuario não encontrado"));
         deleteUser(user);
