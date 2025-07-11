@@ -152,4 +152,8 @@ public class PedidoService {
         pedido.setValorTotal(novoTotal);
         pedidoRepository.save(pedido);
     }
+
+    public void deletarPorId (UUID id) {
+        pedidoRepository.deleteById(id);
+    }
 }

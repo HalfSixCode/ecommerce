@@ -48,4 +48,8 @@ public class PedidoController {
         return ResponseEntity.noContent().build();
     }
 
+    @DeleteMapping("/{pedidoId}")
+    public void deletarPorId (@PathVariable UUID pedidoId) {
+        pedidoService.deletarPorId(pedidoId);
+    }
 }
