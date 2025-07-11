@@ -5,11 +5,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Repository
-public interface ProdutoRepository extends JpaRepository<ProdutoEntity, String> {
-    Optional<ProdutoEntity> findById(String id);
-    boolean existsById(String id);
+public interface ProdutoRepository extends JpaRepository<ProdutoEntity, UUID> {
+    Optional<ProdutoEntity> findById(UUID id);
+    boolean existsById(UUID id);
     boolean existsByNome(String nome);
     Optional<ProdutoEntity> findByNome(String nome);    
 }

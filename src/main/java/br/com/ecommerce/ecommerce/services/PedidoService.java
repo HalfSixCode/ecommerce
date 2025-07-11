@@ -52,7 +52,7 @@ public class PedidoService {
         BigDecimal valorTotal = BigDecimal.ZERO;
 
         for (ItemPedidoRequestDTO itemDTO : pedidoRequestDTO.items()) {
-            ProdutoEntity produto = produtoRepository.findById(String.valueOf(itemDTO.produtoId()))
+            ProdutoEntity produto = produtoRepository.findById(itemDTO.produtoId())
                     .orElseThrow(() -> new EntityNotFoundException("Produto não encontrado"));
 
 
@@ -85,7 +85,7 @@ public class PedidoService {
                 pedidoSalvo.getDataPedido(),
                 pedidoSalvo.getStatusPedido(),
                 pedidoSalvo.getValorTotal(),
-                pedidoSalvo.getUserId().getUser_id(),
+                pedidoSalvo.getUserId().getUserId(),
                 itensResponse
         );
     }
@@ -108,7 +108,7 @@ public class PedidoService {
                 pedido.getDataPedido(),
                 pedido.getStatusPedido(),
                 pedido.getValorTotal(),
-                pedido.getUserId().getUser_id(),
+                pedido.getUserId().getUserId(),
                 itensResponse
         );
     }
@@ -132,7 +132,7 @@ public class PedidoService {
         PedidoEntity pedido = pedidoRepository.findById(pedidoId)
                 .orElseThrow(() -> new EntityNotFoundException("Pedido não encontrado"));
 
-        ProdutoEntity produto = produtoRepository.findById(String.valueOf(itemDTO.produtoId()))
+        ProdutoEntity produto = produtoRepository.findById(itemDTO.produtoId())
                 .orElseThrow(() -> new EntityNotFoundException("Produto não encontrado"));
 
 
