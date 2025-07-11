@@ -10,7 +10,8 @@ import java.util.UUID;
 
 @Repository
 public interface NotificacaoRepository extends JpaRepository<NotificacaoEntity, UUID> {
-    Optional<NotificacaoEntity> findById(UUID notificacaoId);
+    Optional<NotificacaoEntity> findById(long notificacaoId);
     Optional<NotificacaoEntity> findByTipoNotificacao(String tipoNotificacao);
     Optional<NotificacaoEntity> findByUsuarioId(UUID usuarioId);
+    Optional<NotificacaoEntity> findByTitulo(String titulo);
 }
