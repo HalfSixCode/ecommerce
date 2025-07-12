@@ -1,5 +1,6 @@
 package br.com.ecommerce.ecommerce.dtos.response;
 
+import br.com.ecommerce.ecommerce.models.ItemPedidoEntity;
 import br.com.ecommerce.ecommerce.models.enums.StatusPedido;
 
 import java.math.BigDecimal;
@@ -18,5 +19,5 @@ public record PedidoResponseDTO (
 
         UUID userId,
 
-        //List<ItemPedidoResponseDTO> itens
-        List<ItemPedidoResponseDTO> itensResponse){}
+        List<ItemPedidoEntity> itensResponse
+){}

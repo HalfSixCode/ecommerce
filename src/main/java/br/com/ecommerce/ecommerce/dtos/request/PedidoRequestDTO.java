@@ -1,5 +1,6 @@
 package br.com.ecommerce.ecommerce.dtos.request;
 
+import br.com.ecommerce.ecommerce.models.ItemPedidoEntity;
 import jakarta.validation.constraints.NotBlank;
 
 import java.util.List;
@@ -11,5 +12,5 @@ public record PedidoRequestDTO (
         UUID userId,
 
         @NotBlank
-        List<ItemPedidoRequestDTO> items
+        List<ItemPedidoEntity> items
 ) {}
