@@ -4,7 +4,7 @@ import java.util.UUID;
 
 public record AvaliacaoRequestDTO(
     @NotBlank
-    UUID usuarioId,
+    UUID userId,
     @NotBlank
     UUID produtoId,
     @NotBlank

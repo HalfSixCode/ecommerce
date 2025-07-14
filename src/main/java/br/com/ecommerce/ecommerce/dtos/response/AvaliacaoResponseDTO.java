@@ -5,7 +5,7 @@ import java.util.UUID;
 
 public record AvaliacaoResponseDTO(
     UUID avaliacaoId,
-    UUID usuarioId,
+    UUID userId,
     UUID produtoId,
     String comentario,
     int nota,

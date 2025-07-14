@@ -5,7 +5,7 @@ import java.util.UUID;
 
 public record NotificacaoResponseDTO(
     UUID notificacaoId,
-    UUID usuarioId,
+    UUID userId,
     String mensagem,
     LocalDateTime dataCriacao,
     boolean lida

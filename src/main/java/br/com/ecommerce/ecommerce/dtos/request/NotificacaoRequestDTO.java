@@ -7,7 +7,7 @@ import jakarta.validation.constraints.NotBlank;
 
 public record NotificacaoRequestDTO(
     @NotBlank
-    UUID usuarioId,
+    UUID userID,
     @NotBlank
     String mensagem
 ) {}
