@@ -26,12 +26,13 @@ public class PagamentoService {
     @Autowired
     private PagamentoMapper pagamentoMapper;
 
-    public void salvar(PagamentoRequestDTO pagamentoRequestDTO) {
+    public PagamentoEntity salvar(PagamentoRequestDTO pagamentoRequestDTO) {
         PedidoEntity pedido = pedidoRepository.findById(pagamentoRequestDTO.pedidoId())
                 .orElseThrow(() -> new RuntimeException("Pedido não encontrado"));
 
         PagamentoEntity pagamento = pagamentoMapper.toEntity(pagamentoRequestDTO, pedido);
-        pagamentoRepository.save(pagamento);
+       return pagamentoRepository.save(pagamento);
+
     }
 
     public PagamentoEntity buscarPorId(UUID id) {
