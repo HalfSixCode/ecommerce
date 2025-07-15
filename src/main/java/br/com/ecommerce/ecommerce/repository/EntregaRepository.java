@@ -16,4 +16,5 @@ public interface EntregaRepository extends JpaRepository<EntregaEntity, UUID> {
     Optional<EntregaEntity> findByDataEntrega(LocalDateTime dataEntrega);
     Optional<EntregaEntity> findByEnderecoEntrega(String enderecoEntrega);
     Optional<EntregaEntity> findByStatusEntrega(String statusEntrega);
+    Optional<EntregaEntity> findByPedidoId(UUID pedidoId);
 }
