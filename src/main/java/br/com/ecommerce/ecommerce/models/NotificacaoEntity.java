@@ -1,6 +1,7 @@
 package br.com.ecommerce.ecommerce.models;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -19,7 +20,7 @@ public class NotificacaoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "notificacao_id")
-    private Long notificacaoId;
+    private UUID notificacaoId;
 
     @Column(name = "titulo",nullable = false,length = 100)
     private String titulo;
@@ -40,7 +41,7 @@ public class NotificacaoEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "usuario_id", nullable = false)
-    private UserEntity usuarioId;
+    private UserEntity userId;
 
 
 }

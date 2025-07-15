@@ -13,6 +13,8 @@ public interface AvaliacaoRepository extends JpaRepository<AvaliacaoEntity, UUID
     Optional<AvaliacaoEntity> findByDataAvaliacao(LocalDateTime dataAvaliacao);
     Optional<AvaliacaoEntity> findByComentario(String comentario);
     Optional<AvaliacaoEntity> findByNota(Integer nota);
-    Optional<AvaliacaoEntity> findByUsuarioId(UUID usuarioId);
+    Optional<AvaliacaoEntity> findByUsuarioId(UUID userID);
     Optional<AvaliacaoEntity> findByProdutoId(UUID produtoId);
+    Optional<AvaliacaoEntity> findByUsuarioIdAndProdutoId(UUID userId, UUID produtoId);
+
 }

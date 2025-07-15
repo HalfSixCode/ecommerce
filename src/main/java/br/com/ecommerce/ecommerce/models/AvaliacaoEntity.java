@@ -1,9 +1,11 @@
 package br.com.ecommerce.ecommerce.models;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import br.com.ecommerce.ecommerce.dtos.response.UserDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -18,7 +20,7 @@ public class AvaliacaoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "avaliacao_id")
-    private Long avaliacaoId;
+    private UUID avaliacaoId;
 
     @Column(name= "comentario", nullable = false)
     private String comentario;
@@ -36,5 +38,5 @@ public class AvaliacaoEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "usuario_id", nullable = false)
-    private UserEntity usuarioId;
+    private UserEntity userId;
 }
