@@ -38,10 +38,21 @@ public class ProdutoService {
         return produtoMapper.toResponse(produto);
     }
 
-     public ProdutoResponseDTO buscarPorId(UUID id) {
+     public ProdutoResponseDTO buscarResponsePorId(UUID id) {
         ProdutoEntity produto = produtoRepository.findById(id)
             .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
         return produtoMapper.toResponse(produto);
+    }
+
+    public ProdutoResponseDTO buscarResponsePorNome(String nome) {
+        ProdutoEntity produto = produtoRepository.findByNome(nome)
+            .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
+        return produtoMapper.toResponse(produto);
+    }
+
+    public ProdutoEntity buscarPorId(UUID id) {
+        return produtoRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
     }
 
     public List<ProdutoResponseDTO> listarTodos() {
