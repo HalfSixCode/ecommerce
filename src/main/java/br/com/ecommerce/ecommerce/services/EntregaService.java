@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -58,31 +59,84 @@ public class EntregaService {
                 entrega.getStatusEntrega()
         );
     };
-    public Optional<EntregaEntity> alterarStatusEntrega(UUID entregaId, StatusEntrega novoStatus) {
+    public EntregaResponseDTO alterarStatusEntrega(UUID entregaId, StatusEntrega status) {
         EntregaEntity entrega = entregaRepository.findById(entregaId)
                 .orElseThrow(() -> new EntityNotFoundException("Entrega não encontrada"));
-        
-        entrega.setStatusEntrega(novoStatus);
+
+        entrega.setStatusEntrega(status);
         EntregaEntity entregaAtualizada = entregaRepository.save(entrega);
-        
-        return Optional.of(entregaAtualizada);
-    };
+
+        return new EntregaResponseDTO(
+                entregaAtualizada.getEntregaId(),
+                entregaAtualizada.getPedidoId().getPedidoId(),
+                entregaAtualizada.getCodigoRastreio(),
+                entregaAtualizada.getDataEnvio(),
+                entregaAtualizada.getDataEntrega(),
+                entregaAtualizada.getEnderecoEntrega(),
+                entregaAtualizada.getStatusEntrega()
+        );
+    }
+
     public void deletarEntrega(UUID entregaId) {
         EntregaEntity entrega = entregaRepository.findById(entregaId)
                 .orElseThrow(() -> new EntityNotFoundException("Entrega não encontrada"));
         
         entregaRepository.delete(entrega);
     };
-    public Optional<EntregaEntity> buscarEntregaPorCodigoRastreio(String codigoRastreio) {
-        return entregaRepository.findByCodigoRastreio(codigoRastreio);
-    };
-    public Optional<EntregaEntity> buscarEntregaPorDataEnvio(LocalDateTime dataEnvio) {
-        return entregaRepository.findByDataEnvio(dataEnvio);
-    };
-    public Optional<EntregaEntity> buscarEntregaPorDataEntrega(LocalDateTime dataEntrega) {
-        return entregaRepository.findByDataEntrega(dataEntrega);
-    };
-    public Optional<EntregaEntity> buscarEntregaPorEndereco(String enderecoEntrega) {
-        return entregaRepository.findByEnderecoEntrega(enderecoEntrega);
-    };
+
+    public EntregaResponseDTO buscarEntregaPorCodigoRastreio(String codigoRastreio) {
+        EntregaEntity entrega = entregaRepository.findByCodigoRastreio(codigoRastreio)
+                .orElseThrow(() -> new EntityNotFoundException("Entrega não encontrada com o código de rastreio: " + codigoRastreio));
+
+        return new EntregaResponseDTO(
+                entrega.getEntregaId(),
+                entrega.getPedidoId().getPedidoId(),
+                entrega.getCodigoRastreio(),
+                entrega.getDataEnvio(),
+                entrega.getDataEntrega(),
+                entrega.getEnderecoEntrega(),
+                entrega.getStatusEntrega()
+        );
+    }
+
+    public EntregaResponseDTO buscarPorStatus(String status){
+        return entregaRepository.findByStatusEntrega(status)
+                .map(entrega -> new EntregaResponseDTO(
+                        entrega.getEntregaId(),
+                        entrega.getPedidoId().getPedidoId(),
+                        entrega.getCodigoRastreio(),
+                        entrega.getDataEnvio(),
+                        entrega.getDataEntrega(),
+                        entrega.getEnderecoEntrega(),
+                        entrega.getStatusEntrega()
+                ))
+                .orElseThrow(() -> new EntityNotFoundException("Entrega não encontrada com o status: " + status));
+    }
+
+    public EntregaResponseDTO buscarEntregaPorPedido(UUID pedidoId) {
+        return entregaRepository.findByPedidoId(pedidoId)
+                .map(entrega -> new EntregaResponseDTO(
+                        entrega.getEntregaId(),
+                        entrega.getPedidoId().getPedidoId(),
+                        entrega.getCodigoRastreio(),
+                        entrega.getDataEnvio(),
+                        entrega.getDataEntrega(),
+                        entrega.getEnderecoEntrega(),
+                        entrega.getStatusEntrega()
+                ))
+                .orElseThrow(() -> new EntityNotFoundException("Entrega não encontrada"));
+    }
+
+    public List<EntregaResponseDTO> listarTodasEntregas() {
+        return entregaRepository.findAll().stream()
+                .map(entrega -> new EntregaResponseDTO(
+                        entrega.getEntregaId(),
+                        entrega.getPedidoId().getPedidoId(),
+                        entrega.getCodigoRastreio(),
+                        entrega.getDataEnvio(),
+                        entrega.getDataEntrega(),
+                        entrega.getEnderecoEntrega(),
+                        entrega.getStatusEntrega()
+                )).toList();
+    }
 }
