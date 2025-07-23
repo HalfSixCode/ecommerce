@@ -18,7 +18,7 @@ public class EntregaController {
     @Autowired
     private EntregaService entregaService;
 
-    @PostMapping
+    @PostMapping("/entrega/criar")
     public ResponseEntity<EntregaResponseDTO> criarEntrega(@Valid @RequestBody EntregaRequestDTO entregaRequestDTO) {
         EntregaResponseDTO entregaCriada = entregaService.criarEntrega(entregaRequestDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(entregaCriada);
@@ -30,7 +30,7 @@ public class EntregaController {
         return ResponseEntity.ok(entregaBuscada);
     }
 
-    @GetMapping
+    @GetMapping("/entrega/listar")
     public List<EntregaResponseDTO> listarEntregas() {
         return entregaService.listarTodasEntregas();
     }
