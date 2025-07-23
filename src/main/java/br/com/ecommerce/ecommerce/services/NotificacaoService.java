@@ -43,11 +43,11 @@ public class NotificacaoService {
         );
     }
 
-    public Optional<NotificacaoResponseDTO> buscarNotificacaoPorId(UUID notificacaoId) {
+    public NotificacaoResponseDTO buscarNotificacaoPorId(UUID notificacaoId) {
         NotificacaoEntity notificacao = notificacaoRepository.findById(notificacaoId)
                 .orElseThrow(() -> new EntityNotFoundException("Notificação não encontrada"));
 
-        return Optional.of(new NotificacaoResponseDTO(
+        return (new NotificacaoResponseDTO(
                 notificacao.getNotificacaoId(),
                 notificacao.getUserId().getUserId(),
                 notificacao.getMensagem(),
